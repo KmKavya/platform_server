@@ -1,0 +1,2223 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Evolvus Swagger API",
+    "description": "Evolvus Spec for Swagger",
+    "termsOfService": "http://swagger.io/terms/"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Application API",
+      "description": "Everything about Application"
+    },
+    {
+      "name": "Contact API",
+      "description": "Everything about Contact"
+    },
+    {
+      "name": "Entity API",
+      "description": "Everything about Entity"
+    },
+    {
+      "name": "FileUpload API",
+      "description": "Everything about FileUpload"
+    },
+    {
+      "name": "Lookup API",
+      "description": "Everything about Lookup"
+    },
+    {
+      "name": "MasterCurrency API",
+      "description": "Everything about MasterCurrency"
+    },
+    {
+      "name": "MasterTimeZone API",
+      "description": "Everything about MasterTimeZone"
+    },
+    {
+      "name": "Menu API",
+      "description": "Everything about Menu"
+    },
+    {
+      "name": "Role API",
+      "description": "Everything about Role"
+    },
+    {
+      "name": "SupportedDateFormats API",
+      "description": "Everything about SupportedDateFormat"
+    },
+    {
+      "name": "User API",
+      "description": "Everything about User"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api/entity/{entityCode}": {
+      "put": {
+        "tags": [
+          "Entity API"
+        ],
+        "summary": "Update an entity to the database",
+        "description": "",
+        "operationId": "updateEntity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Entity object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/entity": {
+      "post": {
+        "tags": [
+          "Entity API"
+        ],
+        "summary": "Add a new entity to the database",
+        "description": "",
+        "operationId": "addEntity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Entity object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Entity API"
+        ],
+        "summary": "Get an entity from the database.",
+        "description": "",
+        "operationId": "getEntity",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Entity object that needs to be get from the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/user": {
+      "get": {
+        "tags": [
+          "User API"
+        ],
+        "summary": "Get an user from the database.",
+        "description": "",
+        "operationId": "getUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User API"
+        ],
+        "summary": "Add a new user to the database",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/user/{userId}": {
+      "put": {
+        "tags": [
+          "User API"
+        ],
+        "summary": "Update an user to the database",
+        "description": "",
+        "operationId": "updateUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/application": {
+      "get": {
+        "tags": [
+          "Application API"
+        ],
+        "summary": "Get an application from the database.",
+        "description": "",
+        "operationId": "getApplication",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Application API"
+        ],
+        "summary": "Add a new application to the database",
+        "description": "",
+        "operationId": "addApplication",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Application object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Application"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/application/{applicationCode}": {
+      "put": {
+        "tags": [
+          "Application API"
+        ],
+        "summary": "Update an application to the database",
+        "description": "",
+        "operationId": "updateApplication",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Application object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Application"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/menu": {
+      "get": {
+        "tags": [
+          "Menu API"
+        ],
+        "summary": "Get menus from the database.",
+        "description": "",
+        "operationId": "getMenu",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Menu API"
+        ],
+        "summary": "Add a new menu to the database",
+        "description": "",
+        "operationId": "addMenu",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Menu object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Menu"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/role": {
+      "get": {
+        "tags": [
+          "Role API"
+        ],
+        "summary": "Get a role from the database.",
+        "description": "",
+        "operationId": "getRole",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Role API"
+        ],
+        "summary": "Add a new role to the database",
+        "description": "",
+        "operationId": "addRole",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Role object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/role/{roleName}": {
+      "put": {
+        "tags": [
+          "Role API"
+        ],
+        "summary": "Update a role to the database",
+        "description": "",
+        "operationId": "updaterole",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Role object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/private/api/role/{id}": {
+      "put": {
+        "tags": [
+          "Role API"
+        ],
+        "summary": "Update a role to the database",
+        "description": "",
+        "operationId": "updaterole",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Role object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/supportedDateFormats": {
+      "get": {
+        "tags": [
+          "SupportedDateFormats API"
+        ],
+        "summary": "Get a supportedDateFormats from the database.",
+        "description": "",
+        "operationId": "getSupportedDateFormats",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "SupportedDateFormats API"
+        ],
+        "summary": "Add a new supportedDateFormats to the database",
+        "description": "",
+        "operationId": "addSupportedDateFormats",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "supportedDateFormats object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SupportedDateFormats"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/supportedDateFormats": {
+      "put": {
+        "tags": [
+          "SupportedDateFormats API"
+        ],
+        "summary": "Update a supportedDateFormats to the database",
+        "description": "",
+        "operationId": "updateSupportedDateFormats",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "SupportedDateFormats object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SupportedDateFormats"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/private/api/supportedDateFormats/{id}": {
+      "put": {
+        "tags": [
+          "SupportedDateFormats API"
+        ],
+        "summary": "Update a supportedDateFormats to the database",
+        "description": "",
+        "operationId": "updateSupportedDateFormats",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "SupportedDateFormats object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SupportedDateFormats"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/masterTimeZone/{zoneCode}": {
+      "put": {
+        "tags": [
+          "MasterTimeZone API"
+        ],
+        "summary": "Update an masterTimeZone to the database",
+        "description": "",
+        "operationId": "updatemasterTimeZone",
+        "consumes": [
+          "masterTimeZone/json"
+        ],
+        "produces": [
+          "masterTimeZone/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/masterTimeZone"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/masterTimeZone": {
+      "post": {
+        "tags": [
+          "MasterTimeZone API"
+        ],
+        "summary": "Add a new masterTimeZone to the database",
+        "description": "",
+        "operationId": "addmasterTimeZone",
+        "consumes": [
+          "masterTimeZone/json"
+        ],
+        "produces": [
+          "masterTimeZone/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "masterTimeZone object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/masterTimeZone"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MasterTimeZone API"
+        ],
+        "summary": "Get an masterTimeZone from the database.",
+        "description": "",
+        "operationId": "getmasterTimeZone",
+        "consumes": [
+          "masterTimeZone/json"
+        ],
+        "produces": [
+          "masterTimeZone/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/masterCurrency/{currencyCode}": {
+      "put": {
+        "tags": [
+          "MasterCurrency API"
+        ],
+        "summary": "Update an masterCurrency to the database",
+        "description": "",
+        "operationId": "updatemasterCurrency",
+        "consumes": [
+          "masterCurrency/json"
+        ],
+        "produces": [
+          "masterCurrency/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/masterCurrency"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/masterCurrency": {
+      "post": {
+        "tags": [
+          "MasterCurrency API"
+        ],
+        "summary": "Add a new masterCurrency to the database",
+        "description": "",
+        "operationId": "addmasterCurrency",
+        "consumes": [
+          "masterCurrency/json"
+        ],
+        "produces": [
+          "masterCurrency/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "masterCurrency object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/masterCurrency"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "MasterCurrency API"
+        ],
+        "summary": "Get an masterCurrency from the database.",
+        "description": "",
+        "operationId": "getmasterCurrency",
+        "consumes": [
+          "masterCurrency/json"
+        ],
+        "produces": [
+          "masterCurrency/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/lookup/{lookupCode}": {
+      "put": {
+        "tags": [
+          "Lookup API"
+        ],
+        "summary": "Update an lookup to the database",
+        "description": "",
+        "operationId": "updatelookup",
+        "consumes": [
+          "lookup/json"
+        ],
+        "produces": [
+          "lookup/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be updated to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/lookup"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "api/lookup": {
+      "post": {
+        "tags": [
+          "Lookup API"
+        ],
+        "summary": "Add a new lookup to the database",
+        "description": "",
+        "operationId": "addlookup",
+        "consumes": [
+          "lookup/json"
+        ],
+        "produces": [
+          "lookup/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "lookup object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/lookup"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Lookup API"
+        ],
+        "summary": "Get an lookup from the database.",
+        "description": "",
+        "operationId": "getlookup",
+        "consumes": [
+          "lookup/json"
+        ],
+        "produces": [
+          "lookup/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-TENANT-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-USER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-IPHEADER",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ENTITY-ID",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "header",
+            "name": "X-ACCESSLEVEL",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Entity": {
+      "type": "object",
+      "required": [
+        "name",
+        "entityCode",
+        "tenantId",
+        "parent"
+      ],
+      "tags": [
+        {
+          "name": "string",
+          "entityCode": "string",
+          "description": "string",
+          "tenantId": "string",
+          "parent": "string"
+        }
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "MGRoad"
+        },
+        "entityCode": {
+          "type": "string",
+          "example": "MGRoad"
+        },
+        "description": {
+          "type": "string",
+          "example": "This is MGRoad Entity"
+        },
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "parent": {
+          "type": "string",
+          "example": "HEADOFFICET002"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "tenantId",
+        "userName",
+        "userId",
+        "contact",
+        "role",
+        "entityId"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "userName": "string",
+          "userId": "string",
+          "contact": "object",
+          "role": "object",
+          "entityId": "string",
+          "designation": "string",
+          "masterTimeZone": "string",
+          "masterCurrency": "string",
+          "individualTransactionLimit": "number",
+          "dailyLimit": "number"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "userName": {
+          "type": "string",
+          "example": "kavyak"
+        },
+        "userId": {
+          "type": "string",
+          "example": "KAVYAK"
+        },
+        "contact": {
+          "type": "object",
+          "example": {
+            "phoneNumber": "9090909090",
+            "mobileNumber": "8898998987",
+            "emailId": "kavya.k@evolvussolutions.com",
+            "country": "India",
+            "fax": "",
+            "state": "Karnataka",
+            "city": "Hassan"
+          }
+        },
+        "role": {
+          "type": "object",
+          "example": {
+            "roleName": "Developer"
+          }
+        },
+        "entityId": {
+          "type": "string",
+          "example": "H001B001"
+        },
+        "designation": {
+          "type": "string",
+          "example": "Engineer"
+        },
+        "masterTimeZone": {
+          "type": "string",
+          "example": "IST"
+        },
+        "masterCurrency": {
+          "type": "string",
+          "example": "INR"
+        },
+        "individualTransactionLimit": {
+          "type": "number",
+          "example": 100000
+        },
+        "dailyLimApplicationit": {
+          "type": "number",
+          "example": 1000
+        }
+      }
+    },
+    "Application": {
+      "type": "object",
+      "required": [
+        "tenantId",
+        "applicationName",
+        "applicationCode",
+        "entityId"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "entityId": "string",
+          "description": "string",
+          "applicationName": "string",
+          "applicationCode": "string",
+          "logo": "string",
+          "favicon": "string"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "applicationName": {
+          "type": "string",
+          "example": "SANDSTORM"
+        },
+        "applicationCode": {
+          "type": "string",
+          "example": "SANDSTORM"
+        },
+        "entityId": {
+          "type": "string",
+          "example": "H001B001"
+        },
+        "description": {
+          "type": "string",
+          "example": "This is application Sandstorm"
+        }
+      }
+    },
+    "Menu": {
+      "type": "object",
+      "required": [
+        "tenantId",
+        "title",
+        "applicationCode",
+        "menuGroupCode",
+        "menuItems",
+        "menuGroupOrder"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "title": "string",
+          "menuGroupCode": "string",
+          "menuItems": "items",
+          "applicationCode": "string",
+          "menuGroupOrder": "number"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "menuGroupCode": {
+          "type": "string",
+          "example": "MAINTENANCE"
+        },
+        "applicationCode": {
+          "type": "string",
+          "example": "SANDSTORM"
+        },
+        "title": {
+          "type": "string",
+          "example": "MAINTENANCE"
+        },
+        "menuGroupOrder": {
+          "type": "number",
+          "example": 1
+        },
+        "menuItems": {
+          "type": "items",
+          "example": [
+            {
+              "menuItemType": "menu",
+              "applicationCode": "SANDSTORM",
+              "menuItemCode": "roleManagement",
+              "title": "Role Management",
+              "menuItemOrder": 1,
+              "link": "roleManagement",
+              "icon": "evo-role",
+              "subMenuItems": [
+                {
+                  "menuItemType": "button",
+                  "applicationCode": "SANDSTORM",
+                  "menuItemCode": "approve-role",
+                  "title": "Approve",
+                  "menuItemOrder": 1,
+                  "link": "approve",
+                  "icon": "evo-approve"
+                },
+                {
+                  "menuItemType": "button",
+                  "applicationCode": "SANDSTORM",
+                  "menuItemCode": "updateRole",
+                  "title": "Modify",
+                  "menuItemOrder": 1,
+                  "link": "updateRole",
+                  "icon": "evo-role"
+                },
+                {
+                  "menuItemType": "button",
+                  "applicationCode": "SANDSTORM",
+                  "menuItemCode": "reprocess-role",
+                  "title": "Reprocess",
+                  "menuItemOrder": 2,
+                  "link": "reprocess",
+                  "icon": "evo-reprocess"
+                },
+                {
+                  "menuItemType": "button",
+                  "applicationCode": "SANDSTORM",
+                  "menuItemCode": "reject-role",
+                  "title": "Reject",
+                  "menuItemOrder": 3,
+                  "link": "reject",
+                  "icon": "evo-reject"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "Role": {
+      "type": "object",
+      "required": [
+        "tenantId",
+        "roleType",
+        "applicationCode",
+        "roleName",
+        "activationStatus",
+        "associatedUsers",
+        "menuGroup"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "roleType": "string",
+          "txtType": "items",
+          "applicationCode": "string",
+          "roleName": "string",
+          "associatedUsers": "number",
+          "entityId": "string",
+          "menuGroup": "items"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "roleType": {
+          "type": "string",
+          "example": "MAKER"
+        },
+        "txtType": {
+          "type": "items",
+          "example": [
+            "UPDATE_ROLE",
+            "CREATE_ROLE"
+          ]
+        },
+        "applicationCode": {
+          "type": "string",
+          "example": "SANDSTORM"
+        },
+        "roleName": {
+          "type": "string",
+          "example": "CONSOLE_DEVELOPER"
+        },
+        "associatedUsers": {
+          "type": "number",
+          "example": "5"
+        },
+        "entityId": {
+          "type": "string",
+          "example": "H001B001"
+        },
+        "menuGroup": {
+          "type": "items",
+          "example": [
+            {
+              "menuItems": [
+                {
+                  "menuItemType": "button",
+                  "applicationCode": "FLUX-CDA",
+                  "menuItemCode": "ROLE",
+                  "title": "Role Management",
+                  "menuItemOrder": 1
+                },
+                {
+                  "menuItemType": "menu",
+                  "applicationCode": "FLUX-CDA",
+                  "menuItemCode": "ROLE",
+                  "title": "User Management",
+                  "menuItemOrder": 2
+                }
+              ],
+              "deletedFlag": 0,
+              "menuGroupCode": "Administration",
+              "title": "ADMINISTRATION",
+              "applicationCode": "FLUX-CDA",
+              "tenantId": "IVL",
+              "createdBy": "pavithra",
+              "menuGroupOrder": 1,
+              "description": "ops role",
+              "activationStatus": "ACTIVE",
+              "processingStatus": "PENDING_AUTHORIZATION",
+              "associatedUsers": 5,
+              "createdDate": "2018-07-06T12:56:34.623Z"
+            }
+          ]
+        }
+      }
+    },
+    "SupportedDateFormats": {
+      "type": "object",
+      "required": [
+        "tenantId",
+        "formatCode",
+        "timeFormat",
+        "description"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "formatCode": "string",
+          "timeFormat": "string",
+          "description": "string",
+          "objVersion": "number"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "formatCode": {
+          "type": "string",
+          "example": "DD/MM/YYYY"
+        },
+        "timeFormat": {
+          "type": "string",
+          "example": "hh:mm:ss"
+        },
+        "description": {
+          "type": "string",
+          "example": "THIS IS SUPPORTED-DATE-FORMAT"
+        },
+        "objVersion": {
+          "type": "number",
+          "example": "1"
+        },
+        "associatedUsers": {
+          "type": "number",
+          "example": "5"
+        }
+      }
+    },
+    "masterTimeZone": {
+      "type": "object",
+      "required": [
+        "zoneCode",
+        "zoneName",
+        "tenantId"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "zoneCode": "string",
+          "zoneName": "string",
+          "offsetValue": "string",
+          "offset": "string",
+          "objVersion": "number"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "zoneName": {
+          "type": "string",
+          "example": "ASIA"
+        },
+        "zoneCode": {
+          "type": "string",
+          "example": "IST"
+        },
+        "offsetValue": {
+          "type": "string",
+          "example": "+05.30"
+        },
+        "offset": {
+          "type": "string",
+          "example": "UTC+05.30"
+        },
+        "objVersion": {
+          "type": "number",
+          "example": 123
+        }
+      }
+    },
+    "masterCurrency": {
+      "type": "object",
+      "required": [
+        "currencyCode",
+        "currencyName",
+        "tenantId"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "currencyCode": "string",
+          "currencyName": "string",
+          "decimalDigit": "string",
+          "delimiter": "string",
+          "objVersion": "number",
+          "currencyLocale": "string"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "currencyName": {
+          "type": "string",
+          "example": "Algerian dinar"
+        },
+        "currencyCode": {
+          "type": "string",
+          "example": "DZD"
+        },
+        "decimalDigit": {
+          "type": "string",
+          "example": "2"
+        },
+        "delimiter": {
+          "type": "string",
+          "example": "12"
+        },
+        "objVersion": {
+          "type": "number",
+          "example": 123
+        },
+        "currencyLocale": {
+          "type": "string",
+          "example": "locale"
+        }
+      }
+    },
+    "lookup": {
+      "type": "object",
+      "required": [
+        "lookupCode",
+        "value",
+        "tenantId"
+      ],
+      "tags": [
+        {
+          "tenantId": "string",
+          "lookupCode": "string",
+          "value": "string",
+          "valueOne": "string",
+          "valueTwo": "string",
+          "valueThree": "string",
+          "valueFour": "string",
+          "valueFive": "string",
+          "valueSix": "string",
+          "valueSeven": "string",
+          "valueEight": "string",
+          "valueNine": "string",
+          "valueTen": "string"
+        }
+      ],
+      "properties": {
+        "tenantId": {
+          "type": "string",
+          "example": "T001"
+        },
+        "lookupCode": {
+          "type": "string",
+          "example": "PRODUCT_CODE"
+        },
+        "value": {
+          "type": "string",
+          "example": "PENDING_AUTHORIZATION"
+        },
+        "valueOne": {
+          "type": "string",
+          "example": "MANDATE"
+        },
+        "valueTwo": {
+          "type": "string",
+          "example": "zip"
+        },
+        "valueThree": {
+          "type": "string",
+          "example": "BULK_MANDATE"
+        },
+        "valueFour": {
+          "type": "string",
+          "example": "ORG"
+        },
+        "valueFive": {
+          "type": "string",
+          "example": "ACH_TR"
+        },
+        "valueSix": {
+          "type": "string",
+          "example": "ORG/ACHCR"
+        },
+        "valueSeven": {
+          "type": "string",
+          "example": "txt"
+        },
+        "valueEight": {
+          "type": "string",
+          "example": "CSV"
+        },
+        "valueNine": {
+          "type": "string",
+          "example": "ASPCR"
+        },
+        "valueTen": {
+          "type": "string",
+          "example": "EMBK"
+        }
+      }
+    }
+  }
+}

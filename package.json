@@ -1,0 +1,53 @@
+{
+  "name": "@evolvus/evolvus-platform-server",
+  "version": "1.0.13",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "grunt",
+    "start": "node server.js"
+  },
+  "config": {
+    "mocha-sonar-reporter": {
+      "classname": "Test",
+      "testdir": "test",
+      "outputfile": "report/TEST-results.xml"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@evolvus/evolvus-application": "^1.0.17",
+    "@evolvus/evolvus-contact": "^1.0.6",
+    "@evolvus/evolvus-entity": "^1.0.19",
+    "@evolvus/evolvus-file-upload": "^1.0.5",
+    "@evolvus/evolvus-lookup": "^1.0.7",
+    "@evolvus/evolvus-master-currency": "^1.0.5",
+    "@evolvus/evolvus-master-time-zone": "^1.0.5",
+    "@evolvus/evolvus-menu": "^1.0.6",
+    "@evolvus/evolvus-mongo-dao": "^1.0.1",
+    "@evolvus/evolvus-node-health-check": "^2.0.1",
+    "@evolvus/evolvus-role": "^1.0.18",
+    "@evolvus/evolvus-supported-date-formats": "^1.0.5",
+    "@evolvus/evolvus-user": "^1.0.26",
+    "@godaddy/terminus": "^2.4.1",
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.5",
+    "shortid": "^2.2.13",
+    "swagger-node-express": "^2.1.3"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "grunt": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.1",
+    "grunt-env": "^0.4.4",
+    "grunt-mocha-test": "^0.13.3",
+    "mocha": "^5.1.1",
+    "mocha-sonar-reporter": "^0.1.6",
+    "randomstring": "^1.1.5"
+  }
+}

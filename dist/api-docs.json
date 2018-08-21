@@ -60,7 +60,6 @@
     "application/json"
   ],
   "schemes": [
-    "https",
     "http"
   ],
   "paths": {
@@ -80,6 +79,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "Entity object that needs to be updated to the database",
@@ -92,6 +106,9 @@
         "responses": {
           "405": {
             "description": "Invalid input"
+          },
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -112,34 +129,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -172,125 +174,27 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "Entity object that needs to be get from the database",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Entity"
-            }
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        }
-      }
-    },
-    "api/user": {
-      "get": {
-        "tags": [
-          "User API"
-        ],
-        "summary": "Get an user from the database.",
-        "description": "",
-        "operationId": "getUser",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "User API"
-        ],
-        "summary": "Add a new user to the database",
-        "description": "",
-        "operationId": "addUser",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "User object that needs to be added to the database",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/User"
             }
           }
         ],
@@ -317,6 +221,28 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "type": "string",
+            "required": true,
+            "description":"Value of UserId that needs to be modified"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "User object that needs to be updated to the database",
@@ -324,46 +250,147 @@
             "schema": {
               "$ref": "#/definitions/User"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
-          "405": {
-            "description": "Invalid input"
+          "200": {
+            "description": "OK."
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          },
+          "404": {
+            "description": "A user with the specified ID was not found."
+          },
+          "5XX": {
+            "description": "Unexpected error."
           }
         }
       }
     },
-    "api/application": {
+    "/api/user": {
+      "post": {
+        "tags": [
+          "User API"
+        ],
+        "summary": "Add a new user to the database",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the database",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          },
+          "404": {
+            "description": "A user with the specified ID was not found."
+          },
+          "5XX": {
+            "description": "Unexpected error."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User API"
+        ],
+        "summary": "Get an user from the database.",
+        "description": "",
+        "operationId": "getUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "http"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/activationStatus"
+          },
+          {
+            "$ref": "#/parameters/processingStatus"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK."
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Authorization information is missing or invalid."
+          },
+          "404": {
+            "description": "A user with the specified ID was not found."
+          },
+          "5XX": {
+            "description": "Unexpected error."
+          }
+        }
+      }
+    },
+    "/api/application": {
       "get": {
         "tags": [
           "Application API"
@@ -379,34 +406,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           }
         ],
         "responses": {
@@ -430,34 +442,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -492,6 +489,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "Application object that needs to be updated to the database",
@@ -499,36 +511,6 @@
             "schema": {
               "$ref": "#/definitions/Application"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -538,7 +520,7 @@
         }
       }
     },
-    "api/menu": {
+    "/api/menu": {
       "get": {
         "tags": [
           "Menu API"
@@ -554,34 +536,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           }
         ],
         "responses": {
@@ -605,34 +572,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -651,7 +603,7 @@
         }
       }
     },
-    "api/role": {
+    "/api/role": {
       "get": {
         "tags": [
           "Role API"
@@ -667,34 +619,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           }
         ],
         "responses": {
@@ -718,34 +655,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -780,6 +702,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "Role object that needs to be updated to the database",
@@ -787,36 +724,6 @@
             "schema": {
               "$ref": "#/definitions/Role"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -849,36 +756,6 @@
             "schema": {
               "$ref": "#/definitions/Role"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -888,7 +765,7 @@
         }
       }
     },
-    "api/supportedDateFormats": {
+    "/api/supportedDateFormats": {
       "get": {
         "tags": [
           "SupportedDateFormats API"
@@ -904,6 +781,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "header",
             "name": "X-TENANT-ID",
             "type": "string",
@@ -917,7 +809,7 @@
           },
           {
             "in": "header",
-            "name": "X-IPHEADER",
+            "name": "X-IP-HEADER",
             "type": "string",
             "required": true
           },
@@ -929,7 +821,7 @@
           },
           {
             "in": "header",
-            "name": "X-ACCESSLEVEL",
+            "name": "X-ACCESS-LEVEL",
             "type": "string",
             "required": true
           }
@@ -955,34 +847,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -992,68 +869,6 @@
             "schema": {
               "$ref": "#/definitions/SupportedDateFormats"
             }
-          }
-        ],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        }
-      }
-    },
-    "/api/supportedDateFormats": {
-      "put": {
-        "tags": [
-          "SupportedDateFormats API"
-        ],
-        "summary": "Update a supportedDateFormats to the database",
-        "description": "",
-        "operationId": "updateSupportedDateFormats",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "body",
-            "description": "SupportedDateFormats object that needs to be updated to the database",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/SupportedDateFormats"
-            }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -1079,6 +894,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "SupportedDateFormats object that needs to be updated to the database",
@@ -1086,36 +916,6 @@
             "schema": {
               "$ref": "#/definitions/SupportedDateFormats"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -1141,6 +941,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "User object that needs to be updated to the database",
@@ -1148,36 +963,6 @@
             "schema": {
               "$ref": "#/definitions/masterTimeZone"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -1187,7 +972,7 @@
         }
       }
     },
-    "api/masterTimeZone": {
+    "/api/masterTimeZone": {
       "post": {
         "tags": [
           "MasterTimeZone API"
@@ -1203,34 +988,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -1263,34 +1033,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           }
         ],
         "responses": {
@@ -1316,6 +1071,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "User object that needs to be updated to the database",
@@ -1323,36 +1093,6 @@
             "schema": {
               "$ref": "#/definitions/masterCurrency"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -1362,7 +1102,7 @@
         }
       }
     },
-    "api/masterCurrency": {
+    "/api/masterCurrency": {
       "post": {
         "tags": [
           "MasterCurrency API"
@@ -1378,34 +1118,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -1438,34 +1163,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           }
         ],
         "responses": {
@@ -1491,6 +1201,21 @@
         ],
         "parameters": [
           {
+            "$ref": "#/parameters/tenantId"
+          },
+          {
+            "$ref": "#/parameters/user"
+          },
+          {
+            "$ref": "#/parameters/ipAddress"
+          },
+          {
+            "$ref": "#/parameters/entityId"
+          },
+          {
+            "$ref": "#/parameters/accessLevel"
+          },
+          {
             "in": "body",
             "name": "body",
             "description": "User object that needs to be updated to the database",
@@ -1498,36 +1223,6 @@
             "schema": {
               "$ref": "#/definitions/lookup"
             }
-          },
-          {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
-          },
-          {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
           }
         ],
         "responses": {
@@ -1537,7 +1232,7 @@
         }
       }
     },
-    "api/lookup": {
+    "/api/lookup": {
       "post": {
         "tags": [
           "Lookup API"
@@ -1553,34 +1248,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           },
           {
             "in": "body",
@@ -1613,34 +1293,19 @@
         ],
         "parameters": [
           {
-            "in": "header",
-            "name": "X-TENANT-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/tenantId"
           },
           {
-            "in": "header",
-            "name": "X-USER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/user"
           },
           {
-            "in": "header",
-            "name": "X-IPHEADER",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/ipAddress"
           },
           {
-            "in": "header",
-            "name": "X-ENTITY-ID",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/entityId"
           },
           {
-            "in": "header",
-            "name": "X-ACCESSLEVEL",
-            "type": "string",
-            "required": true
+            "$ref": "#/parameters/accessLevel"
           }
         ],
         "responses": {
@@ -2218,6 +1883,67 @@
           "example": "EMBK"
         }
       }
+    }
+  },
+  "parameters": {
+    "tenantId": {
+      "in": "header",
+      "name": "X-TENANT-ID",
+      "type": "string",
+      "required": true
+    },
+    "user": {
+      "in": "header",
+      "name": "X-USER",
+      "type": "string",
+      "required": true
+    },
+    "ipAddress": {
+      "in": "header",
+      "name": "X-IP-HEADER",
+      "type": "string",
+      "required": true
+    },
+    "entityId": {
+      "in": "header",
+      "name": "X-ENTITY-ID",
+      "type": "string",
+      "required": true
+    },
+    "accessLevel": {
+      "in": "header",
+      "name": "X-ACCESS-LEVEL",
+      "type": "string",
+      "required": true
+    },
+    "limit": {
+      "in": "query",
+      "name": "Limit",
+      "type": "string",
+      "required": false,
+      "description": "Limits the number of output records.Default is 20"
+    },
+    "activationStatus": {
+      "in": "query",
+      "name": "activationStatus",
+      "type": "string",
+      "required": false,
+      "description": "ACTIVE/INACTIVE"
+    },
+    "processingStatus": {
+      "in": "query",
+      "name": "processingStatus",
+      "type": "string",
+      "required": false,
+      "description": "AUTHORIZED/REJECTED/PENDING_AUTHORIZATION"
+    }
+  },
+  "responses": {
+    "405": {
+      "description": "Invalid input"
+    },
+    "200": {
+      "description": "OK"
     }
   }
 }
